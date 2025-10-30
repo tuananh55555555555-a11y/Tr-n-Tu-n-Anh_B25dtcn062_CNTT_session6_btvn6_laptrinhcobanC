@@ -1,15 +1,37 @@
 #include <stdio.h>
-int main() {
-    int n, t, d = 1;
-    printf("Nhap so nguyen: ");
-    scanf("%d", &n);
-    if(n < 0) n = -n;
-    t = n;
-    while(t >= 10) { t /= 10; d *= 10; }
-    while(d > 0) {
-        printf("%d ", n / d);
-        n %= d;
-        d /= 10;
+int mani(){
+    int n;
+
+    printf("Nhap mot so nguyen bat ky: ");
+    scanf("%d",&n);
+
+    if(n < 0){
+        printf("So nay la so am. Chu so lan luot la:\n- ");
+        n = abs(n);
+    }else{
+        printf("Cac chu so lan luot la:\n");
     }
+
+    if(n == 0){
+        printf("0\n");
+        return 0;
+    }
+
+    int temp = n;
+    int reversed = 0;
+    while(temp > 0){
+        reversed = reversed * 10 + temp % 10;
+        temp /= 10;
+    }
+
+    
+    while(reversed > 0){
+        int digit = reversed % 10;
+        printf("%d ",digit);
+        reversed /= 10;
+    }
+
+    printf("\n");
+    return 0;
 }
 
